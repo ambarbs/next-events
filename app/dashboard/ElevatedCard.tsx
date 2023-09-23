@@ -3,12 +3,13 @@ import "./elevatedCard.css";
 
 interface ElevatedCardProps {
   imageUrl: string;
+  description: string;
 }
 
-const ElevatedCard: React.FC<ElevatedCardProps> = ({ imageUrl }) => {
+const ElevatedCard: React.FC<ElevatedCardProps> = ({ imageUrl, description }) => {
   return (
     <div className="elevated-with-image-background" style={{ backgroundImage: `url(${imageUrl})` }}>
-      {/* Content of the card */}
+     {description}
     </div>
   );
 };

@@ -56,6 +56,14 @@ export const rows: TableRow[] = [
     myRating: 3,
     image: '/cooks.jpg',
   },
+  {
+    option: "Art and Culture Hop",
+    description:
+      "Explore Sydney's vibrant arts and culture scene with a visit to three world-class museums.",
+    links: "https://www.artgallery.nsw.gov.au/",
+    myRating: 0,
+    image: '/museum.jpg',
+  },
 ];
 
 interface TableProps {
@@ -101,15 +109,7 @@ const Table: React.FC<TableProps> = ({ rows }) => {
   return (
     <div className=" text-slate-400 lg:text-lg text-sm font-bold">
       <table className="w-screen">
-        {/* <thead>
-          <tr>
-            {columns.map((column) => (
-              <th key={column.key} className="text-center font-bold border p-2">
-                {column.header}
-              </th>
-            ))}
-          </tr>
-        </thead> */}
+
         <tbody>
           {rows.map((row,index) => {
             // eslint-disable-next-line react/jsx-key
@@ -119,12 +119,14 @@ const Table: React.FC<TableProps> = ({ rows }) => {
               key={row.option}
               className={flip[index] ? "border font-normal elevated-card-tr": ''}
               >
+                <td>
               <FlipAnimation
                 frontContent={<div
                   onClick={() => handleFlip(index)}
                 >
                   <ElevatedCard
                   imageUrl={row.image}
+                  description={row.option}
                 /></div>}
                 flippedContent={
                   <div className="border font-normal " onClick={(e) => e.stopPropagation()}>
@@ -149,6 +151,7 @@ const Table: React.FC<TableProps> = ({ rows }) => {
                 }
                 isFlipped={flip[index]}
               />
+              </td>
               </tr>
             );
           })}
