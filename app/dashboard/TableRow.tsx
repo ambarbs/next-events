@@ -108,7 +108,7 @@ const Table: React.FC<TableProps> = ({ rows }) => {
   console.log(flip)
   return (
     <div className=" text-slate-400 lg:text-lg text-sm font-bold">
-      <table className="w-screen">
+      <table className="w-screen mt-4">
 
         <tbody>
           {rows.map((row,index) => {

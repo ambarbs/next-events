@@ -8,7 +8,7 @@ interface ElevatedCardProps {
 
 const ElevatedCard: React.FC<ElevatedCardProps> = ({ imageUrl, description }) => {
   return (
-    <div className="elevated-with-image-background" style={{ backgroundImage: `url(${imageUrl})` }}>
+    <div className="elevated-with-image-background" style={{ backgroundImage: `url(.${imageUrl})` }}>
      {description}
     </div>
   );
