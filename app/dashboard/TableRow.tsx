@@ -105,7 +105,6 @@ const Table: React.FC<TableProps> = ({ rows }) => {
       return flip[i]
     } ))
   }
-  console.log(flip)
   return (
     <div className=" text-slate-400 lg:text-lg text-sm font-bold">
       <table className="w-screen mt-4">
