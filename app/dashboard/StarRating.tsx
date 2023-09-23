@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import FlipAnimation from "./FlipAnimation";
 import './starRating.css'
 interface StarRatingProps {
-  rating: number;
+  myRating: number;
   maxRating?: number;
   onClick?: Function;
 }
 
-const StarRating: React.FC<StarRatingProps> = ({ maxRating = 5, onClick }) => {
+const StarRating: React.FC<StarRatingProps> = ({ maxRating = 5, onClick, myRating }) => {
   const [hoveredRating, setHoveredRating] = useState(0);
   const [rating, setRating] = useState(0);
   const [showRevealButton, setShowRevealButton] = useState(false);
@@ -28,11 +28,23 @@ const StarRating: React.FC<StarRatingProps> = ({ maxRating = 5, onClick }) => {
         style={{ color: i <= hoveredRating ? "gold" : "gray" }}
         className="cursor-pointer"
         onMouseEnter={() => {
-          debugger;
           setHoveredRating(i);
         }}
         onMouseLeave={() => setHoveredRating(rating)}
         onClick={() => handleStarClick(i)}
+      >
+        *
+      </span>
+    );
+  }
+
+  const myRatings = [];
+  for (let i = 1; i <= myRating; i++) {
+    myRatings.push(
+      <span
+        key={i}
+        style={{ color: i <= myRating ? "gold" : "gray" }}
+        className="cursor-pointer"
       >
         *
       </span>
@@ -44,7 +56,6 @@ const StarRating: React.FC<StarRatingProps> = ({ maxRating = 5, onClick }) => {
       <FlipAnimation
         frontContent={
           <>
-            {" "}
             {showRevealButton && !showMyRating && (
               <div
                 className=" reveal-button"
@@ -57,7 +68,7 @@ const StarRating: React.FC<StarRatingProps> = ({ maxRating = 5, onClick }) => {
         }
         flippedContent={<>{showMyRating && <div className="flex-col justify-center items-center">
           <h6 className="text-sm">My rating</h6>
-        {stars}
+        {myRatings}
         </div>}</>}
         isFlipped={showMyRating}
       />

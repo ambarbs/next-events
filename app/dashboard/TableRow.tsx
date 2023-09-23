@@ -1,51 +1,67 @@
-'use client'
-import React, {useState} from 'react';
-import StarRating from './StarRating';
-
+"use client";
+import React, { useState } from "react";
+import StarRating from "./StarRating";
+import "./tableRow.css";
+import FlipAnimation from "./FlipAnimation";
+import ElevatedCard from "./ElevatedCard";
+import Bondi from './images/bondi_coogee.jpg';
+import Image from 'next/image'
 
 export interface TableRow {
-    option: string;
-    description: string;
-    links: string;
-    rating: number;
-  }
+  option: string;
+  description: string;
+  links: string;
+  myRating: number;
+  image: string;
+}
 
 export const rows: TableRow[] = [
-    {
-      option: "Visit the Australian Museum",
-      description: "This is a world-class museum with a wide range of exhibits, from dinosaurs to Aboriginal culture.",
-      links: "https://australian.museum/",
-      rating: 1,
-    },
-    {
-      option: "Take a walk through the Royal Botanic Garden",
-      description: "This is a beautiful garden with a variety of plants and flowers.",
-      links: "https://www.rbgsyd.nsw.gov.au/",
-      rating: 2,
-    },
-    {
-      option: "Go to the Taronga Zoo",
-      description: "This is a great zoo with a wide range of animals from all over the world.",
-      links: "https://taronga.org.au/",
-      rating: 3,
-    },
-    {
-      option: "Visit the Art Gallery of New South Wales",
-      description: "This is a world-class art gallery with a wide range of paintings, sculptures, and other works of art.",
-      links: "https://www.artgallery.nsw.gov.au/",
-      rating: 4,
-    },
-    {
-      option: "Go for a hike in Sydney Olympic Park",
-      description: "This is a great place to get some exercise and enjoy the outdoors.",
-      links: "https://www.sydneyolympicpark.com.au/",
-      rating: 5,
-    },
-  ];
-  
+  {
+    option: "Bondi to Coogee coastal walk",
+    description:
+      "Enjoy a scenic coastal walk from Bondi Beach to Coogee Beach, passing by several other beaches and parks along the way.",
+    links: "https://www.sydney.com/destinations/sydney/sydney-east/bondi/attractions/bondi-coogee-coastal-walk",
+    myRating: 5,
+    image: '/bondi_coogee.jpg',
+  },
+  {
+    option: "Explore Manly",
+    description:
+      "Visit Manly beach for a walk, exploring delicious restaurants and bars, and a relaxed atmosphere",
+    links: "https://explorethemanly.com.au/",
+    myRating: 4,
+    image: '/manly.jpg',
+  },
+  {
+    option: "Dymocks",
+    description:
+      "Book lover's paradise. Happy to grab a coffee and see what you read.",
+    links: "https://www.dymocks.com.au/",
+    myRating: 0,
+    image: '/dymocks.jpg',
+  },
+  {
+    option: "Munich Brauhaus The Rocks and Opera Bar",
+    description:
+      "Vist the German brwery in The Rocks and later have adrink at the Opera Bar and enjoy the stunning views",
+    links: "https://www.munichbrauhaus.com.au/",
+    myRating: 4,
+    image: '/munich.jpg',
+  },
+  {
+    option: "Cooks River Walk",
+    description:
+      "Relaxed walk beside the Cooks river. The path is popular for walking, running and cycling.",
+    links: "https://www.innerwest.nsw.gov.au/things-to-do/cooks-river-walk",
+    myRating: 3,
+    image: '/cooks.jpg',
+  },
+];
+
 interface TableProps {
   rows: TableRow[];
 }
+
 
 const Table: React.FC<TableProps> = ({ rows }) => {
   const columns = [
@@ -71,11 +87,21 @@ const Table: React.FC<TableProps> = ({ rows }) => {
 
   const setIsRevealButtonVisible = () => setShowRevealButton(true);
 
+  const [flip, setFlip] = useState([false, false, false, false, false])
 
+  const handleFlip = (index: number) => {
+    setFlip(flip.map( (item, i) => {
+      if(index === i){
+        return !flip[i];
+      }
+      return flip[i]
+    } ))
+  }
+  console.log(flip)
   return (
     <div className=" text-slate-400 lg:text-lg text-sm font-bold">
-      <table>
-        <thead>
+      <table className="w-screen">
+        {/* <thead>
           <tr>
             {columns.map((column) => (
               <th key={column.key} className="text-center font-bold border p-2">
@@ -83,20 +109,49 @@ const Table: React.FC<TableProps> = ({ rows }) => {
               </th>
             ))}
           </tr>
-        </thead>
+        </thead> */}
         <tbody>
-          {rows.map((row) => (
-            <tr key={row.option} className="border font-normal">
-              <td className='px-2 lg:px-2 lg:py-6 w-24 lg:w-64 border'>{row.option}</td>
-              <td className='px-2 lg:px-2 lg:py-6 w-48 lg:w-72 border'>{row.description}</td>
-              <td className='px-2 lg:px-2 lg:py-6 w-16 lg:w-48 border '>
-                <a href={row.links} className="underline break-all">{row.links}</a>
-              </td>
-              <td className='px-2 lg:px-2 lg:py-6 w-12 lg:w-32 text-center border'>
-                <StarRating rating={row.rating} onClick={setIsRevealButtonVisible}/>
-              </td>
-            </tr>
-          ))}
+          {rows.map((row,index) => {
+            // eslint-disable-next-line react/jsx-key
+            return (
+              // eslint-disable-next-line react/jsx-key
+              <tr
+              key={row.option}
+              className={flip[index] ? "border font-normal elevated-card-tr": ''}
+              >
+              <FlipAnimation
+                frontContent={<div
+                  onClick={() => handleFlip(index)}
+                >
+                  <ElevatedCard
+                  imageUrl={row.image}
+                /></div>}
+                flippedContent={
+                  <div className="border font-normal " onClick={(e) => e.stopPropagation()}>
+                    <td className="px-2 lg:px-2 lg:py-6 w-1/5 lg:w-64 border">
+                      {row.option}
+                    </td>
+                    <td className="px-2 lg:px-2 lg:py-6 w-2/5 lg:w-72 border">
+                      {row.description}
+                    </td>
+                    <td className="px-2 lg:px-2 lg:py-6 w-1/10 lg:w-48 border ">
+                      <a href={row.links} className="underline break-all">
+                        Link
+                      </a>
+                    </td>
+                    <td className="px-2 lg:px-2 lg:py-6 w-1/5 lg:w-32 text-center border">
+                      <StarRating
+                        myRating={row.myRating}
+                        onClick={setIsRevealButtonVisible}
+                      />
+                    </td>
+                  </div>
+                }
+                isFlipped={flip[index]}
+              />
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
@@ -104,4 +159,3 @@ const Table: React.FC<TableProps> = ({ rows }) => {
 };
 
 export default Table;
-
