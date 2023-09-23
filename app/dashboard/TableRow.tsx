@@ -95,7 +95,7 @@ const Table: React.FC<TableProps> = ({ rows }) => {
 
   const setIsRevealButtonVisible = () => setShowRevealButton(true);
 
-  const [flip, setFlip] = useState([false, false, false, false, false])
+  const [flip, setFlip] = useState(Array(rows.length).fill(false))
 
   const handleFlip = (index: number) => {
     setFlip(flip.map( (item, i) => {
