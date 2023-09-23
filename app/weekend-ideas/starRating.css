@@ -1,0 +1,15 @@
+.reveal-button {
+    background-color: #690d8d8e;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .reveal-button:hover {
+    background-color: #333;
+  }

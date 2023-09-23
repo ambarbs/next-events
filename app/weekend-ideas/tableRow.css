@@ -1,0 +1,32 @@
+.elevated-card-tr {
+    background-color: #0a010f;
+    color: #fff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 4px;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  .elevated-card-tr:hover {
+    /* background-color: #635f5f;
+    color: #3f0a5a; */
+  }
+
+  /* .elevated-card-tr td:first-child {
+    flex: 20%;
+  }
+  
+  .elevated-card-tr td:nth-child(2) {
+    flex: 40%;
+  }
+  
+  .elevated-card-tr td:nth-child(3) {
+    flex: 10%;
+  }
+  
+  .elevated-card-tr td:last-child {
+    flex: 20%;
+  }
+   */
+
+  
