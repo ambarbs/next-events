@@ -53,7 +53,7 @@ export const rows: TableRow[] = [
     description:
       "Relaxed walk beside the Cooks river. The path is popular for walking, running and cycling.",
     links: "https://www.innerwest.nsw.gov.au/things-to-do/cooks-river-walk",
-    myRating: 3,
+    myRating: 4,
     image: '/cooks.jpg',
   },
   {
