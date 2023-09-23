@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import FlipAnimation from "./FlipAnimation";
-import './starRating.css'
+import "./starRating.css";
 interface StarRatingProps {
   myRating: number;
   maxRating?: number;
   onClick?: Function;
 }
 
-const StarRating: React.FC<StarRatingProps> = ({ maxRating = 5, onClick, myRating }) => {
+const StarRating: React.FC<StarRatingProps> = ({
+  maxRating = 5,
+  onClick,
+  myRating,
+}) => {
   const [hoveredRating, setHoveredRating] = useState(0);
   const [rating, setRating] = useState(0);
   const [showRevealButton, setShowRevealButton] = useState(false);
@@ -66,10 +70,17 @@ const StarRating: React.FC<StarRatingProps> = ({ maxRating = 5, onClick, myRatin
             )}
           </>
         }
-        flippedContent={<>{showMyRating && <div className="flex-col justify-center items-center">
-          <h6 className="text-sm">My rating</h6>
-        {myRatings}
-        </div>}</>}
+        flippedContent={
+          <>
+            {showMyRating && (
+              <div className="flex-col justify-center items-center">
+                <h6 className="text-sm">My rating</h6>
+                {myRating === 0 && 'N/A'}
+                {myRating >= 0 && myRatings}
+              </div>
+            )}
+          </>
+        }
         isFlipped={showMyRating}
       />
     </div>
