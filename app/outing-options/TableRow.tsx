@@ -5,6 +5,7 @@ import "./tableRow.css";
 import FlipAnimation from "./FlipAnimation";
 import ElevatedCard from "./ElevatedCard";
 import Bondi from "./images/bondi_coogee.jpg";
+import Return from "./images/return-white.png";
 import Image from "next/image";
 
 export interface TableRow {
@@ -161,9 +162,12 @@ const Table: React.FC<TableProps> = ({ rows }) => {
                     }
                     flippedContent={
                       <div
-                        className="border font-normal "
+                        className="border font-normal items-center"
                         onClick={(e) => e.stopPropagation()}
                       >
+                        <div className="items-center justify-center flex">
+                          <img src={Return.src} alt="reverse" onClick={() => handleFlip(index)}/>
+                        </div>
                         <td className="px-2 lg:px-2 lg:py-6 w-1/5 lg:w-64 border align-middle">
                           {row.option}
                         </td>
