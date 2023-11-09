@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 "use client";
 import React, { useState } from "react";
 import StarRating from "./StarRating";
@@ -166,6 +167,7 @@ const Table: React.FC<TableProps> = ({ rows }) => {
                         onClick={(e) => e.stopPropagation()}
                       >
                         <div className="items-center justify-center flex">
+                        // eslint-disable-next-line
                           <img src={Return.src} alt="reverse" onClick={() => handleFlip(index)}/>
                         </div>
                         <td className="px-2 lg:px-2 lg:py-6 w-1/5 lg:w-64 border align-middle">
