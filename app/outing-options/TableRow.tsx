@@ -48,10 +48,7 @@ export const rows: TableRow[] = [
       "Vist the German brwery in The Rocks and later have adrink at the Opera Bar and enjoy the stunning views",
     links: [
       { url: "https://www.munichbrauhaus.com.au/", label: "Munich Brauhaus" },
-      {
-        url: "https://www.sydneyoperahouse.com/visit/eat-and-drink/opera-bar",
-        label: "Munich",
-      },
+
     ],
     myRating: 4,
     image: "/munich.jpg",
