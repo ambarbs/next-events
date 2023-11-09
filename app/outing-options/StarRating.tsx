@@ -24,6 +24,8 @@ const StarRating: React.FC<StarRatingProps> = ({
     setShowRevealButton(true);
   };
 
+  console.log('my rating = ', myRating)
+
   const stars = [];
   for (let i = 1; i <= maxRating; i++) {
     stars.push(
@@ -43,17 +45,18 @@ const StarRating: React.FC<StarRatingProps> = ({
   }
 
   const myRatings = [];
-  for (let i = 1; i <= myRating; i++) {
+  for (let i = 0; i <5; i++) {
     myRatings.push(
       <span
         key={i}
-        style={{ color: i <= myRating ? "gold" : "gray" }}
+        style={{ color: i+1 <= myRating ? "gold" : "gray" }}
         className="cursor-pointer"
       >
         *
       </span>
     );
   }
+  console.log({myRatings})
   return (
     <div className="flex-col justify-center items-center">
       <div className="flex justify-around space-x-1 text-3xl">{stars}</div>

@@ -30,30 +30,17 @@ export const rows: TableRow[] = [
     image: "/bondi_coogee.jpg",
   },
   {
-    option: "Explore Manly",
+    option: "Spit Bridge to Manly",
     description:
-      "Visit Manly beach for a walk, exploring delicious restaurants and bars, and a relaxed atmosphere",
+      " A coastal trek with stunning Sydney harbor views.",
     links: [
       {
-        url: "https://www.sydney.com/destinations/sydney/sydney-north/manly",
+        url: "https://www.sydney.com/things-to-do/nature-and-parks/walks/spit-bridge-to-manly-walk",
         label: "Manly",
       },
     ],
     myRating: 4,
-    image: "/manly.jpg",
-  },
-  {
-    option: "Dymocks",
-    description:
-      "Book lover's paradise. Happy to grab a coffee and see what you read.",
-    links: [
-      {
-        url: "https://www.sydney.com/destinations/sydney/sydney-city/city-centre/attractions/the-dymocks-building",
-        label: "Dymocks building",
-      },
-    ],
-    myRating: 0,
-    image: "/dymocks.jpg",
+    image: "/spit.jpg",
   },
   {
     option: "Munich Brauhaus, The Rocks and Opera Bar",
@@ -63,7 +50,7 @@ export const rows: TableRow[] = [
       { url: "https://www.munichbrauhaus.com.au/", label: "Munich Brauhaus" },
       {
         url: "https://www.sydneyoperahouse.com/visit/eat-and-drink/opera-bar",
-        label: "Opera Bar",
+        label: "Munich",
       },
     ],
     myRating: 4,
@@ -79,23 +66,35 @@ export const rows: TableRow[] = [
         label: "Cook's River",
       },
     ],
-    myRating: 4,
+    myRating: 5,
     image: "/cooks.jpg",
   },
   {
-    option: "Art and Culture Hop",
+    option: "Bradleys Head to Chowder Bay walk",
     description:
-      "Explore Sydney's vibrant arts and culture scene with a visit to three world-class museums.",
+      "Discover Sydney's maritime charm and historic sites.",
     links: [
       {
-        url: "https://www.artgallery.nsw.gov.au/",
-        label: "Museum 1",
+        url: "https://www.nationalparks.nsw.gov.au/things-to-do/walking-tracks/bradleys-head-to-chowder-bay-walk",
+        label: "Bradleys",
       },
-      {label: 'Museum 2', url: 'https://australian.museum/' },
-      {label: 'Museum 3', url: 'https://www.sydney.com/destinations/sydney/sydney-city/the-rocks/attractions/museum-contemporary-art-australia-mca' },
     ],
     myRating: 0,
-    image: "/museum.jpg",
+    image: "/bradley.jpg",
+  },
+  
+  {
+    option: "Opera Bar",
+    description:
+      "Stunning views, vibrant atmosphere, and diverse cuisine by the Sydney Opera House.",
+    links: [
+      {
+        url: "https://www.sydneyoperahouse.com/visit/eat-and-drink/opera-bar",
+        label: "Opera Bar",
+      },
+    ],
+    myRating: 4,
+    image: "/operaBar.jpg",
   },
 ];
 
@@ -168,13 +167,13 @@ const Table: React.FC<TableProps> = ({ rows }) => {
                         className="border font-normal "
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <td className="px-2 lg:px-2 lg:py-6 w-1/5 lg:w-64 border">
+                        <td className="px-2 lg:px-2 lg:py-6 w-1/5 lg:w-64 border align-middle">
                           {row.option}
                         </td>
-                        <td className="px-2 lg:px-2 lg:py-6 w-2/5 lg:w-72 border">
+                        <td className="px-2 lg:px-2 lg:py-6 w-2/5  border align-middle">
                           {row.description}
                         </td>
-                        <td className="px-2 lg:px-2 lg:py-6 w-1/10 lg:w-48 border ">
+                        <td className="px-2 lg:px-2 lg:py-6 w-1/10 lg:w-48 border align-middle">
                           {row.links.map( link => <a
                             key={link.label}
                             href={link.url}
@@ -184,7 +183,7 @@ const Table: React.FC<TableProps> = ({ rows }) => {
                             {link.label}
                           </a>)}
                         </td>
-                        <td className="px-2 lg:px-2 lg:py-6 w-1/5 lg:w-32 text-center border">
+                        <td className="px-2 lg:px-2 lg:py-6 w-1/5 lg:w-32 text-center border align-middle">
                           <StarRating
                             myRating={row.myRating}
                             onClick={setIsRevealButtonVisible}
